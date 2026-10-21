@@ -126,7 +126,9 @@
 var hoyStr=new Date().toISOString().split('T')[0];
 firebase.initializeApp({databaseURL:"https://inventario-19b33-default-rtdb.europe-west1.firebasedatabase.app"});
 var db=firebase.database();
-var inv={},car=[],compraTemp=[],ventas={},gastos={},cajaData={},abonosCache={},consumosCache={},clientesCache={},comprasCache={},proveedoresCache={};
+var inv={},car=[],compraTemp=[],ventas={},gastos={},cajaData={},abonosCache={},comprasCache={};
+db.ref('ventas').on('value',function(s){ventas=s.val()||{}; if(typeof renderFiados==='function')renderFiados();});
+db.ref('inventario').on('value',function(s){inv=s.val()||{};});
 var html5QrCode=null,html5QrCodeInvent=null,html5QrCodeCompras=null;
 var tempImagenBase64='';
 function toast(m){var e=document.getElementById('msg');e.textContent=m;e.style.display='block';setTimeout(()=>e.style.display='none',3000);}
