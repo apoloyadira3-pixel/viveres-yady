@@ -21,7 +21,7 @@ function cargarFotoCompra(input){if(!input.files||!input.files[0])return;var fil
 function tomarFotoCamara(){var i=document.createElement('input');i.type='file';i.accept='image/*';i.capture='environment';i.onchange=function(){cargarFotoCompra(i);};i.click();}
 function quitarFotoCompra(){fotoCompraTemp="";document.getElementById('fotoProd').value="";document.getElementById('previewFotoCompra').style.display='none';}
 function ver(t){var secs=["inicio","invent","ventas","compras","fiados","facturas","gastos","prest","resumen"];for(var i=0;i<secs.length;i++){var s=document.getElementById("sec-"+secs[i]);if(s){if(secs[i]===t){s.classList.remove("hidden");s.style.display="block";}else{s.classList.add("hidden");s.style.display="none";}}var tab=document.getElementById("tab-"+secs[i]);if(tab){if(secs[i]===t)tab.classList.add("active");else tab.classList.remove("active");}}}
-firebase.initializeApp({databaseURL:"https://inventario-19b33-default-rtdb.europe-west1.firebasedatabase.app"});
+firebase.initializeApp({apiKey:"AIzaSyAZVLRHLprC7-WeQchBmBbwyV67UGVvoxk",authDomain:"inventario-19b33.firebaseapp.com",databaseURL:"https://inventario-19b33-default-rtdb.europe-west1.firebasedatabase.app",projectId:"inventario-19b33",storageBucket:"inventario-19b33.firebasestorage.app",messagingSenderId:"1070582253176",appId:"1:1070582253176:web:d640123f8c15c17bf48f8d"});
 firebase.auth().signInAnonymously().catch(function(e){console.log("AUTH",e);});
 var db=firebase.database();var inv={},car=[],compraTemp=[],ventas={},gastos={},compras={},prestamos={},abonos={};var searchResults=[],searchResultsCompras=[];
 function toast(m){var e=document.getElementById("msg");e.textContent=m;e.style.display="block";setTimeout(()=>e.style.display="none",3500);}
